@@ -32,7 +32,7 @@ main:
    		la $s5, baseadd    	
   		
    		# Write code here to load A[i] to $s3
-   		li $t2, 6 #6 should be chaned to A[i]
+   		li $t2, $s2 
    		add $t2, $t2, $t2
    		add $t2, $t2, $t2
    		add $t1, $t2, $s5
@@ -46,7 +46,7 @@ main:
 		syscall
 
 		# Write code here to load and print A[j]	  
-		li $t2, 6 #6 should be chaned to A[j]
+		li $t2, $s2 
    		add $t2, $t2, $t2
    		add $t2, $t2, $t2
    		add $t1, $t2, $s5
