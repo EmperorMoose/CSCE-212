@@ -47,6 +47,21 @@ ExitLoop:
       		syscall  
       		# You write the code here to print out the odd numbers in the OddArray. This is basically a for loop over $s3 elements in OddArray.
  		# The printed numbers are separted by ', ' as in string4 defined above.
+ 		
+ 		la $t1, OddArray
+ 		li, $t2, 0	#loop counter
+ 
+OddLoop:
+		beq $t2, $s3, Exit	#Check for array end
+		
+		lw $a0, ($t1)	#print block
+		li $v0, 1
+		syscall
+		
+		addi $t2, $t2, 1	#increment counter
+		addi $t1, $t1, 4	#increment array pointer
+		j OddLoop
+		
  		     		
 		addi $v0, $zero, 4      # code for printing string is 4 
       		la $a0, string3 	# load address of string to be printed into $a0    
@@ -54,6 +69,21 @@ ExitLoop:
       		# You write the code here to print out the even numbers in the EvenArray. This is basically a for loop over $s4 elements in EvenArray.
 		# The printed numbers are separted by ', ' as in string4 defined above.
 		
+		la $t1, EvenArray
+ 		li, $t2, 0	#loop counter
+ 
+EvenLoop:
+		beq $t2, $s4, Exit	#Check for array end
+		
+		lw $a0, ($t1)	#print block
+		li $v0, 1
+		syscall
+		
+		addi $t2, $t2, 1	#increment counter
+		addi $t1, $t1, 4	#increment array pointer
+		j EvenLoop
+
+Exit:	
 		# exit	
 		addi $v0, $zero, 10
 		syscall 
